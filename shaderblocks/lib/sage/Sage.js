@@ -1,6 +1,3 @@
-//=================================================================
-// MISC
-//=================================================================
 function uuid(){
     var dt = new Date().getTime();
     if(window.performance && typeof window.performance.now === "function") dt += performance.now(); //use high-precision timer if available
@@ -13,10 +10,6 @@ function uuid(){
     return uuid;
 }
 
-
-//=================================================================
-// UI
-//=================================================================
 function newElm(elmName,txt = null,cls = null, root = null){
 	var elm = document.createElement(elmName);
 	if(root != null) root.appendChild(elm);

@@ -30,15 +30,10 @@
 		import NodeBox	from "./lib/NodeBox.js";
 		import EMan		from "./lib/EditorManager.js";
 
-		import GLCanvas	from "./lib/fungiMini/GLCanvas.js";
-		import Quad		from "./lib/fungiMini/Quad.js";
-		import Shader	from "./lib/fungiMini/Shader.js";
-
 		import { FinalNode, UVNode } from "./lib/nodes/Data.js";
 		import { Noise2DNode } from "./lib/nodes/Noise.js";
 		import { FloatNode, Vec4Node } from "./lib/nodes/Vars.js";
 		import { MultiplyNode, SmoothStepNode } from "./lib/nodes/Math.js";
-		
 
 		var nUV, nMulti;
 		var nNoise, nFloat, nVec4, nFinal, nGlobal,nMultiNode,nSmoothStep;
@@ -55,25 +50,13 @@
 			nMulti = new MultiplyNode(6,200,30,"40.1");
 			nSmoothStep = new SmoothStepNode(7,300,200);
 
-
-			//nFloat.connectTo("F","R",nFinal);
-			//nFloat.connectTo("F","G",nFinal);
-			//nFloat.connectTo("F","B",nFinal);
-			//nFloat.connectTo("F","A",nFinal);
-
-			//nVec4.connectTo("V","VEC",nFinal);
+			nFloat.connectTo("F","R",nFinal);
+			nFloat.connectTo("F","G",nFinal);
+			nFloat.connectTo("F","B",nFinal);
+			nFloat.connectTo("F","A",nFinal);
+			nVec4.connectTo("V","VEC",nFinal);
 
 			EMan.processNodes(nFinal);
-		});
-
-		window.addEventListener("keyup",function(e){
-			
-			if(e.keyCode == 32){
-				var frag = EMan.processNodes(nFinal);
-				EMan.preview.run(frag);
-
-				nFinal.copyCanvas( EMan.preview.gl.canvas );
-			}
 		});
 	</script>
 </body>
